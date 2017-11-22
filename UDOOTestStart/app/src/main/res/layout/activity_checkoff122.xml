@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Sepal length"
+        android:layout_above="@+id/editText_sw"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sepal width"
+        android:layout_alignBaseline="@+id/editText_sw"
+        android:layout_alignBottom="@+id/editText_sw"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Petal length"
+        android:layout_above="@+id/editTextpw"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Petal width"
+        android:layout_alignBaseline="@+id/editTextpw"
+        android:layout_alignBottom="@+id/editTextpw"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button_train"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Train"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button_classify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Classify"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_alignBaseline="@+id/button_train"
+        android:layout_alignBottom="@+id/button_train"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText_sl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText_sw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/editText_pl"
+        android:layout_alignLeft="@+id/editText_pl"
+        android:layout_alignStart="@+id/editText_pl"
+        android:layout_marginBottom="27dp" />
+
+    <EditText
+        android:id="@+id/editText_pl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/editTextpw"
+        android:layout_alignStart="@+id/editTextpw" />
+
+    <EditText
+        android:id="@+id/editTextpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/acc1"
+        android:layout_toRightOf="@+id/button_train"
+        android:layout_toEndOf="@+id/button_train" />
+
+    <TextView
+        android:id="@+id/acc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button_classify"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:text="acc1" />
+
+    <TextView
+        android:id="@+id/conmat1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/editText_sl"
+        android:layout_toRightOf="@+id/editText_sl"
+        android:text="matrix" />
+</RelativeLayout>
