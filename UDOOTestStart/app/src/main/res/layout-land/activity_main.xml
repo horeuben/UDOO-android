@@ -72,30 +72,31 @@
         android:layout_toEndOf="@+id/textView_position_string" />
 
     <Button
-        android:text="Checkoff1"
         android:id="@+id/checkoff1Button"
         android:layout_width="500dp"
         android:layout_height="50dp"
-        android:textSize="30sp"
-        android:onClick="Checkoff1"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/accuracy"
+        android:layout_marginBottom="67dp"
         android:layout_toEndOf="@+id/accuracy"
-        android:layout_marginBottom="67dp" />
+        android:layout_toRightOf="@+id/accuracy"
+        android:onClick="Checkoff1"
+        android:text="Checkoff1"
+        android:textSize="30sp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/checkoff1_2Button"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:textSize="30sp"
+        android:layout_alignEnd="@+id/checkoff1Button"
+        android:layout_alignRight="@+id/checkoff1Button"
+        android:layout_below="@+id/textView_pulse"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
         android:onClick="Checkoff1.2"
         android:text="checkoff 1.2"
-        android:layout_marginRight="74dp"
-        android:layout_marginEnd="74dp"
-        android:layout_alignBaseline="@+id/textView_position"
-        android:layout_alignBottom="@+id/textView_position"
-        android:layout_alignRight="@+id/checkoff1Button"
-        android:layout_alignEnd="@+id/checkoff1Button" />
+        android:textSize="30sp"
+        android:visibility="invisible" />
 
 
     <TextView
@@ -113,5 +114,38 @@
         android:textSize="30sp"
         android:layout_below="@id/accuracy"
         android:textIsSelectable="true"/>
+
+    <TextView
+        android:id="@+id/textViewresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/checkoff1Button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:text="Rest"
+        android:textSize="45sp"
+        android:textStyle="bold" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewresult"
+        android:layout_toEndOf="@+id/confusionMatrix"
+        android:layout_toRightOf="@+id/confusionMatrix"
+        android:text="ToggleButton"
+        android:textOff="rest"
+        android:textOn="stress" />
+
+    <Button
+        android:id="@+id/button_train"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/checkoff1Button"
+        android:layout_toEndOf="@+id/confusionMatrix"
+        android:layout_toRightOf="@+id/confusionMatrix"
+        android:text="Train" />
 
 </RelativeLayout>
