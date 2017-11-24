@@ -245,46 +245,48 @@ public class MainActivity extends Activity {
             distance.setText(pulseRate + " (bpm)");
             pulse.setText(oxygenLvl + " (pct)");
             position.setText(pos + "");
-            try {
-                WLSVM svmCls = (WLSVM) weka.core.SerializationHelper.read(svmModel.getAbsolutePath());
-                Attribute Attribute1 = new Attribute("pulseRate");
-                Attribute Attribute2 = new Attribute("oxygenLvl");
-                // Declare the class attribute along with its values (nominal)
-                FastVector fvClassVal = new FastVector(2);
-                fvClassVal.addElement("Rest");
-                fvClassVal.addElement("Stress");
+            if (pulseRate!=0.0) {
+                try {
+                    WLSVM svmCls = (WLSVM) weka.core.SerializationHelper.read(svmModel.getAbsolutePath());
+                    Attribute Attribute1 = new Attribute("pulseRate");
+                    Attribute Attribute2 = new Attribute("oxygenLvl");
+                    // Declare the class attribute along with its values (nominal)
+                    FastVector fvClassVal = new FastVector(2);
+                    fvClassVal.addElement("Rest");
+                    fvClassVal.addElement("Stress");
 
-                Attribute ClassAttribute = new Attribute("class", fvClassVal);
-                // Declare the feature vector template
-                FastVector fvWekaAttributes = new FastVector(5);
-                fvWekaAttributes.addElement(Attribute1);
-                fvWekaAttributes.addElement(Attribute2);
-                fvWekaAttributes.addElement(ClassAttribute);
+                    Attribute ClassAttribute = new Attribute("class", fvClassVal);
+                    // Declare the feature vector template
+                    FastVector fvWekaAttributes = new FastVector(5);
+                    fvWekaAttributes.addElement(Attribute1);
+                    fvWekaAttributes.addElement(Attribute2);
+                    fvWekaAttributes.addElement(ClassAttribute);
 
-                Instances testingSet = new Instances("TestingInstance", fvWekaAttributes, 1);
-                testingSet.setClassIndex(testingSet.numAttributes() - 1);
-                // Create and fill an instance, and add it to the testingSet
-                Instance iExample = new Instance(testingSet.numAttributes());
-                iExample.setValue((Attribute) fvWekaAttributes.elementAt(0), pulseRate);
-                iExample.setValue((Attribute) fvWekaAttributes.elementAt(1), oxygenLvl);
-                iExample.setValue((Attribute) fvWekaAttributes.elementAt(2), "Rest"); // dummy
-                // add the instance
-                testingSet.add(iExample);
+                    Instances testingSet = new Instances("TestingInstance", fvWekaAttributes, 1);
+                    testingSet.setClassIndex(testingSet.numAttributes() - 1);
+                    // Create and fill an instance, and add it to the testingSet
+                    Instance iExample = new Instance(testingSet.numAttributes());
+                    iExample.setValue((Attribute) fvWekaAttributes.elementAt(0), pulseRate);
+                    iExample.setValue((Attribute) fvWekaAttributes.elementAt(1), oxygenLvl);
+                    iExample.setValue((Attribute) fvWekaAttributes.elementAt(2), "Rest"); // dummy
+                    // add the instance
+                    testingSet.add(iExample);
 
-                testingSet.setClassIndex(testingSet.numAttributes() - 1);
-                double pred = -1;
-                for (int i = 0; i < testingSet.numInstances(); i++) {
-                    pred = svmCls.classifyInstance(testingSet.instance(i));
+                    testingSet.setClassIndex(testingSet.numAttributes() - 1);
+                    double pred = -1;
+                    for (int i = 0; i < testingSet.numInstances(); i++) {
+                        pred = svmCls.classifyInstance(testingSet.instance(i));
+                    }
+                    if (pred == 1) {
+                        state_result.setText("Stress");
+                        state_result.setTextColor(Color.RED);
+                    } else {
+                        state_result.setText("Rest");
+                        state_result.setTextColor(Color.GREEN);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                if (pred == 1) {
-                    state_result.setText("Stress");
-                    state_result.setTextColor(Color.RED);
-                } else {
-                    state_result.setText("Rest");
-                    state_result.setTextColor(Color.GREEN);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 
